@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 // import {ThemeContext, themes} from './theme-context';
-import {indexToString, getAlteration} from '../constants/utils'
-import {createScale, scales, listScales, scaleNameByIndex} from '../constants/scales'
+import { indexToString, getAlteration } from '../constants/utils';
+import { createScale, scales, listScales } from '../constants/scales';
+import Banner from './containers/Banner';
+import Settings from './containers/Settings';
 
 export default function App() {
   // App
@@ -13,8 +15,9 @@ export default function App() {
   const [scale, selectScale] = useState(0);
 
   // Secondary options
-  const [frets, changeFrets] = useState(12);
-  const [strings, changeStrings] = useState(6);
+  const [frets, changeFretCount] = useState(12);
+  const [strings, changeStringCount] = useState(6);
+  const [degreeNotation, changeDegreeNotation] = useState('Numeric'); // Numeric, Roman or Indian
 
   // Toggles
   const [sharps, toggleSharps] = useState(true);
@@ -27,43 +30,58 @@ export default function App() {
 
   // Constants
   const scaleOptions = listScales();
-  const [noteOptions, updateNoteOptions] = useState(getAlteration(sharps));
+  const [noteOptions, updateNoteOptions] = useState(
+    getAlteration(sharps),
+  );
 
   useEffect(() => {
     updateNoteOptions(getAlteration(sharps));
-  }, [sharps])
+  }, [sharps]);
 
   return (
-
     <div>
-      <div>Top Header</div>
-        <div>Centered Title</div>
-        <div>Randomize Button</div>
-        <div>Reset to defaults button</div>
-        <div>Light/Dark Theme Button</div>
-      <div>Main Options</div>
-        <select onChange={(e) => selectNote(e.target.value)}>
-          {noteOptions.map((n, i) => {return <option value={i} key={i}>{n}</option>})}
-        </select>
-        <select onChange={(e) => selectScale(e.target.value)}>
-          {scaleOptions.map((s, i) => {return <option value={i} key={i}>{s}</option>})}
-        </select>
-        <div>Small hover info button next to scale name</div>
-      <div>Secondary Options</div>
-        <div>Number of Frets</div>
-        <div>Number of Strings</div>
-      <div>Fretboard Options</div>
-        <div>Highlight Roots</div>
-        <button onClick={() => toggleSharps(!sharps)}>go</button>
-        <div>All Frets</div>
-        <div>Degrees</div>
-        <div>While degrees is open, select indian, numeral or number notation</div>
-      <div>Fretboard</div>
-      <div>Searchable Tuning Preset Dropdown</div>
-      <div>Remember My Settings</div>
-      <div>Footer</div>
-        <div>App Store Link</div>
-        <div>Contact</div>
+      <Banner />
+      <Settings
+        notes={noteOptions}
+        selectNote={selectNote}
+        scales={scaleOptions}
+        selectScale={selectScale}
+        frets={frets}
+        changeFretCount={changeFretCount}
+        strings={strings}
+        changeStringCount={changeStringCount}
+        sharps={sharps}
+        toggleSharps={toggleSharps}
+        highlight={highlight}
+        toggleHighlight={toggleHighlight}
+        allNotes={allNotes}
+        toggleAllNotes={toggleAllNotes}
+        degrees={degrees}
+        toggleDegrees={toggleDegrees}
+        degreeNotation={degreeNotation}
+        changeDegreeNotation={changeDegreeNotation}
+      />
     </div>
-  )
+  );
 }
+
+/*
+    Components
+      Banner (Top with Title)
+        3x CircularBtn (Random, Reset, Light/Dark)
+      Settings (Main)
+        Primary Settings
+          2 Searchable Dropdowns & Info button
+        Secondary
+          2 Steppers (with typeable input) for Strings/Frets
+          Toggle buttons (Sharps, Roots, All Notes, Degrees)
+            Degrees, when on, has a sub-modal for type of degree (Indian, Roman, Numeric)
+      Fretboard View
+        Tuners
+        Fret/String #s from settings
+        Searchable Preset Tunings Dropdown
+        Checkbox to Remember my settings
+      Footer
+        App Store Link
+        Contact
+  */

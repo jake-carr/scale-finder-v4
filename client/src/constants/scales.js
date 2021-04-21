@@ -20,10 +20,6 @@ export const scales = [
   },
 ];
 
-export const scaleNameByIndex = (i) => {
-  return scales[i].name;
-}
-
 export const listScales = () => {
   return scales.map((scale, i) => {
     return scale.name

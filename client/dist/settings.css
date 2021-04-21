@@ -1,0 +1,30 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectors {
+  display: flex;
+  flex-direction: row;
+}
+
+.stepper {
+  display: flex;
+  flex-direction: row;
+}
+
+.degree-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.degree-option {
+  border: none;
+  background: none;
+}
+
+.degree-option#selected {
+  color: blue;
+}
