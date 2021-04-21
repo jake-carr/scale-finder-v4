@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import {ThemeContext, themes} from './theme-context';
+import { tunings } from '../constants/tunings';
 import { indexToString, getAlteration } from '../constants/utils';
 import { createScale, scales, listScales } from '../constants/scales';
 import Banner from './containers/Banner';
@@ -15,6 +16,7 @@ export default function App() {
   // Main selectors
   const [note, selectNote] = useState(3);
   const [scale, selectScale] = useState(0);
+  const [tuning, changeTuning] = useState(tunings[0].values); // Standard
 
   // Secondary options
   const [frets, changeFretCount] = useState(12);
@@ -26,9 +28,6 @@ export default function App() {
   const [highlight, toggleHighlight] = useState(false);
   const [allNotes, toggleAllNotes] = useState(false);
   const [degrees, toggleDegrees] = useState(false);
-
-  // Tuning
-  const [tuning, changeTuning] = useState([7, 2, 10, 5, 0, 7]); // Standard tuning 6-string high E to low E
 
   // Constants
   const scaleOptions = listScales();
@@ -72,7 +71,7 @@ export default function App() {
         highlight={highlight}
         degrees={degrees}
         degreeNotation={degreeNotation}
-        saveSettings={saveSettings}
+        changeTuning={changeTuning}
         toggleSaveSettings={toggleSaveSettings}
       />
       <Footer />

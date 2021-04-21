@@ -1,6 +1,6 @@
 import React from 'react';
 import Fret from './Fret';
-import { indexToString } from '../../constants/utils';
+import Tuner from '../interactive/Tuner';
 
 export default function GuitarString({
   tuning,
@@ -11,6 +11,8 @@ export default function GuitarString({
   highlight,
   degrees,
   degreeNotation,
+  preset,
+  changeTuning,
 }) {
   const renderFrets = () => {
     const root = tuning[stringIndex];
@@ -42,7 +44,13 @@ export default function GuitarString({
 
   return (
     <div className="guitar-string">
-      <div>- {indexToString(tuning[stringIndex], sharps)} +</div>
+      <Tuner
+        change={changeTuning}
+        tuning={tuning}
+        stringIndex={stringIndex}
+        preset={preset}
+        sharps={sharps}
+      />
       {renderFrets()}
     </div>
   );
