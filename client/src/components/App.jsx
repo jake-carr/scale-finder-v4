@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-// import {ThemeContext, themes} from './theme-context';
+import React, { useState, useEffect, useContext } from 'react';
+import { ThemeContext, themes } from '../constants/theme-context';
 import { tunings } from '../constants/tunings';
 import { indexToString, getAlteration } from '../constants/utils';
 import { createScale, scales, listScales } from '../constants/scales';
@@ -10,8 +10,17 @@ import Footer from './containers/Footer';
 
 export default function App() {
   // App
-  const [theme, toggleTheme] = useState('dark');
+  const theme = useContext(ThemeContext);
+  const [selectedTheme, toggleTheme] = useState('dark');
   const [saveSettings, toggleSaveSettings] = useState(false);
+
+  const handleToggleTheme = () => {
+    if (selectedTheme === 'dark') {
+      toggleTheme('light');
+    } else {
+      toggleTheme('dark');
+    }
+  };
 
   // Main selectors
   const [note, selectNote] = useState(3);
@@ -40,63 +49,44 @@ export default function App() {
   }, [sharps]);
 
   return (
-    <React.Fragment>
-      <Banner />
-      <Settings
-        notes={noteOptions}
-        selectNote={selectNote}
-        scales={scaleOptions}
-        selectScale={selectScale}
-        frets={frets}
-        changeFretCount={changeFretCount}
-        strings={strings}
-        changeStringCount={changeStringCount}
-        sharps={sharps}
-        toggleSharps={toggleSharps}
-        highlight={highlight}
-        toggleHighlight={toggleHighlight}
-        allNotes={allNotes}
-        toggleAllNotes={toggleAllNotes}
-        degrees={degrees}
-        toggleDegrees={toggleDegrees}
-        degreeNotation={degreeNotation}
-        changeDegreeNotation={changeDegreeNotation}
-      />
-      <Fretboard
-        tuning={tuning}
-        frets={frets}
-        strings={strings}
-        sharps={sharps}
-        allNotes={allNotes}
-        highlight={highlight}
-        degrees={degrees}
-        degreeNotation={degreeNotation}
-        changeTuning={changeTuning}
-        saveSettings={saveSettings}
-        toggleSaveSettings={toggleSaveSettings}
-      />
-      <Footer />
-    </React.Fragment>
+    <ThemeContext.Provider value={themes[selectedTheme]}>
+      <div className="app">
+        <Banner toggleTheme={handleToggleTheme} />
+        <Settings
+          notes={noteOptions}
+          selectNote={selectNote}
+          scales={scaleOptions}
+          selectScale={selectScale}
+          frets={frets}
+          changeFretCount={changeFretCount}
+          strings={strings}
+          changeStringCount={changeStringCount}
+          sharps={sharps}
+          toggleSharps={toggleSharps}
+          highlight={highlight}
+          toggleHighlight={toggleHighlight}
+          allNotes={allNotes}
+          toggleAllNotes={toggleAllNotes}
+          degrees={degrees}
+          toggleDegrees={toggleDegrees}
+          degreeNotation={degreeNotation}
+          changeDegreeNotation={changeDegreeNotation}
+        />
+        <Fretboard
+          tuning={tuning}
+          frets={frets}
+          strings={strings}
+          sharps={sharps}
+          allNotes={allNotes}
+          highlight={highlight}
+          degrees={degrees}
+          degreeNotation={degreeNotation}
+          changeTuning={changeTuning}
+          saveSettings={saveSettings}
+          toggleSaveSettings={toggleSaveSettings}
+        />
+        <Footer />
+      </div>
+    </ThemeContext.Provider>
   );
 }
-
-/*
-    Components
-      Banner (Top with Title)
-        3x CircularBtn (Random ,Reset, Light/Dark)
-      Settings (Main)
-        Primary Settings
-          2 Searchable Dropdowns & Info button
-        Secondary
-          2 Steppers (with typeable input) for Strings/Frets
-          Toggle buttons (Sharps, Roots, All Notes, Degrees)
-            Degrees, when on, has a sub-modal for type of degree (Indian, Roman, Numeric)
-      Fretboard View
-        Tuners
-        Fret/String #s from settings
-        Searchable Preset Tunings Dropdown
-        Checkbox to Remember my settings
-      Footer
-        App Store Link
-        Contact
-  */

@@ -5,7 +5,7 @@ export default function CircularButton({ title, action }) {
     <button
       className="circular-button"
       title={title}
-      onClick={() => action}
+      onClick={() => action()}
     >
       {title}
     </button>

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import GuitarString from '../display/GuitarString.jsx';
 import SearchableDropdown from '../interactive/SearchableDropdown.jsx';
 import Checkbox from '../interactive/Checkbox.jsx';
 import { tunings } from '../../constants/tunings';
+import { ThemeContext } from '../../constants/theme-context';
 
 export default function Fretboard({
   tuning,

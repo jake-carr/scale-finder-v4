@@ -1,7 +1,7 @@
 import React from 'react';
 import CircularButton from '../interactive/CircularButton.jsx';
 
-export default function Banner() {
+export default function Banner({ toggleTheme }) {
   return (
     <div className="banner">
       <div className="container">
@@ -9,7 +9,7 @@ export default function Banner() {
         <CircularButton title="reset" />
       </div>
       <div className="banner-title">Guitar Scale Finder</div>
-      <CircularButton title="theme" />
+      <CircularButton title="theme" action={toggleTheme} />
     </div>
   );
 }
