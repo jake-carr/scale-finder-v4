@@ -4,6 +4,8 @@ import { indexToString, getAlteration } from '../constants/utils';
 import { createScale, scales, listScales } from '../constants/scales';
 import Banner from './containers/Banner';
 import Settings from './containers/Settings';
+import Fretboard from './containers/Fretboard';
+import Footer from './containers/Footer';
 
 export default function App() {
   // App
@@ -39,7 +41,7 @@ export default function App() {
   }, [sharps]);
 
   return (
-    <div>
+    <React.Fragment>
       <Banner />
       <Settings
         notes={noteOptions}
@@ -61,14 +63,27 @@ export default function App() {
         degreeNotation={degreeNotation}
         changeDegreeNotation={changeDegreeNotation}
       />
-    </div>
+      <Fretboard
+        tuning={tuning}
+        frets={frets}
+        strings={strings}
+        sharps={sharps}
+        allNotes={allNotes}
+        highlight={highlight}
+        degrees={degrees}
+        degreeNotation={degreeNotation}
+        saveSettings={saveSettings}
+        toggleSaveSettings={toggleSaveSettings}
+      />
+      <Footer />
+    </React.Fragment>
   );
 }
 
 /*
     Components
       Banner (Top with Title)
-        3x CircularBtn (Random, Reset, Light/Dark)
+        3x CircularBtn (Random ,Reset, Light/Dark)
       Settings (Main)
         Primary Settings
           2 Searchable Dropdowns & Info button
