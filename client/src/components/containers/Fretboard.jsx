@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import GuitarString from '../display/GuitarString.jsx';
 import SearchableDropdown from '../interactive/SearchableDropdown.jsx';
+import Checkbox from '../interactive/Checkbox.jsx';
 import { tunings } from '../../constants/tunings';
 
 export default function Fretboard({
@@ -12,6 +13,7 @@ export default function Fretboard({
   degrees,
   degreeNotation,
   changeTuning,
+  saveSettings,
   toggleSaveSettings,
 }) {
   const listPresetTunings = () => {
@@ -31,7 +33,6 @@ export default function Fretboard({
   };
 
   const renderGuitarStrings = () => {
-    console.log(tuning);
     return tuning.map((note, i) => {
       return (
         <GuitarString
@@ -58,7 +59,7 @@ export default function Fretboard({
         options={tuningOptions}
         action={handleSelectPresetTuning}
       />
-      <div>Remember Settings Checkbox</div>
+      <Checkbox on={saveSettings} toggle={toggleSaveSettings} />
     </div>
   );
 }

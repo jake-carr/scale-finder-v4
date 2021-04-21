@@ -29,8 +29,6 @@ export default function Tuner({
   };
 
   useEffect(() => {
-    console.log('hello');
-    console.log(preset);
     change(preset);
   }, [preset]);
 

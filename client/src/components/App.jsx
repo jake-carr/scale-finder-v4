@@ -72,6 +72,7 @@ export default function App() {
         degrees={degrees}
         degreeNotation={degreeNotation}
         changeTuning={changeTuning}
+        saveSettings={saveSettings}
         toggleSaveSettings={toggleSaveSettings}
       />
       <Footer />
