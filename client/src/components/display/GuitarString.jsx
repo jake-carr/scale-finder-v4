@@ -20,7 +20,9 @@ export default function GuitarString({
     return [...Array(frets).keys()].map((fret, i) => {
       const fretNumber = i + 1;
       let note = root + fretNumber;
-      if (note >= 12) {
+      if (note >= 24) {
+        note = note - 24;
+      } else if (note >= 12) {
         note = note - 12;
       }
       let label = null;

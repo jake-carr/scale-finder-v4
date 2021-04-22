@@ -2,6 +2,7 @@ import React, {createContext} from 'react';
 
 export const themes = {
   light: {
+    ref: 'light',
     // todo
     background: '95f9e3',
     text: '564946',
@@ -10,6 +11,7 @@ export const themes = {
     tertiary: '558564',
   },
   dark: {
+    ref: 'dark',
     background: '#202020',
     text: '#edf5e1',
     // placeholders

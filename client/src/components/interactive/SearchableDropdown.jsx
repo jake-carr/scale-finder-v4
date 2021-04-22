@@ -1,8 +1,12 @@
 import React from 'react';
 
-export default function SearchableDropdown({ options, action }) {
+export default function SearchableDropdown({
+  options,
+  action,
+  value,
+}) {
   return (
-    <select onChange={(e) => action(e.target.value)}>
+    <select value={value} onChange={(e) => action(e.target.value)}>
       {options.map((opt, i) => {
         return (
           <option value={i} key={i}>

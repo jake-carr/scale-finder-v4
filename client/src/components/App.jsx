@@ -73,13 +73,23 @@ export default function App() {
   return (
     <ThemeContext.Provider value={themes[selectedTheme]}>
       <div className="app">
-        <Banner toggleTheme={handleToggleTheme} />
+        <Banner
+          toggleTheme={handleToggleTheme}
+          changeTuning={changeTuning}
+          selectNote={selectNote}
+          selectScale={selectScale}
+          changeFretCount={changeFretCount}
+          changeStringCount={changeStringCount}
+        />
         <Settings
+          note={note}
+          scale={scale}
           selectNote={selectNote}
           scales={scaleOptions}
           selectScale={selectScale}
-          frets={frets}
           tuning={tuning}
+          changeTuning={changeTuning}
+          frets={frets}
           changeFretCount={changeFretCount}
           strings={strings}
           changeStringCount={changeStringCount}

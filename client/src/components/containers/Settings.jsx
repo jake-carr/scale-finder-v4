@@ -4,6 +4,7 @@ import Stepper from '../interactive/Stepper.jsx';
 import RectangularButton from '../interactive/RectangularButton.jsx';
 import DegreeModal from '../interactive/DegreeModal.jsx';
 import { getAlteration } from '../../constants/utils';
+import { scales } from '../../constants/scales';
 
 export default function Settings({
   frets,
@@ -24,6 +25,8 @@ export default function Settings({
   degreeNotation,
   changeDegreeNotation,
   tuning,
+  note,
+  scale,
 }) {
   const noteOptions = getAlteration(sharps);
 
@@ -37,8 +40,13 @@ export default function Settings({
         <SearchableDropdown
           options={noteOptions}
           action={handleSelectNote}
+          value={note}
         />
-        <SearchableDropdown options={scales} action={selectScale} />
+        <SearchableDropdown
+          options={scales}
+          action={selectScale}
+          value={scale}
+        />
         <button>info</button>
       </div>
       <div className="selectors">

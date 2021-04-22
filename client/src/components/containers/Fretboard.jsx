@@ -58,6 +58,7 @@ export default function Fretboard({
       <SearchableDropdown
         options={tuningOptions}
         action={handleSelectPresetTuning}
+        // TODO: needs a value in order to update dynamically when reset to defaults button is clicked.
       />
       <Checkbox on={saveSettings} toggle={toggleSaveSettings} />
     </div>
