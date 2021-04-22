@@ -10,7 +10,6 @@ import Footer from './containers/Footer';
 
 export default function App() {
   // App
-  const theme = useContext(ThemeContext);
   const [selectedTheme, toggleTheme] = useState('dark');
   const [saveSettings, toggleSaveSettings] = useState(false);
 
@@ -30,7 +29,7 @@ export default function App() {
   // Secondary options
   const [frets, changeFretCount] = useState(12);
   const [strings, changeStringCount] = useState(6);
-  const [degreeNotation, changeDegreeNotation] = useState('Numeric'); // Numeric, Roman or Indian
+  const [degreeNotation, changeDegreeNotation] = useState('Numeric'); // Numeric, Roman numeral or Indian sargams
 
   // Toggles
   const [sharps, toggleSharps] = useState(true);
@@ -39,21 +38,21 @@ export default function App() {
   const [degrees, toggleDegrees] = useState(false);
 
   // Constants
+  const theme = useContext(ThemeContext);
   const scaleOptions = listScales();
-  const [noteOptions, updateNoteOptions] = useState(
-    getAlteration(sharps),
+  const [currentScale, changeScale] = useState(
+    createScale(note, scales[scale].pattern),
   );
 
   useEffect(() => {
-    updateNoteOptions(getAlteration(sharps));
-  }, [sharps]);
+    changeScale(createScale(note, scales[scale].pattern));
+  }, [note, scale]);
 
   return (
     <ThemeContext.Provider value={themes[selectedTheme]}>
       <div className="app">
         <Banner toggleTheme={handleToggleTheme} />
         <Settings
-          notes={noteOptions}
           selectNote={selectNote}
           scales={scaleOptions}
           selectScale={selectScale}
@@ -73,6 +72,7 @@ export default function App() {
           changeDegreeNotation={changeDegreeNotation}
         />
         <Fretboard
+          currentScale={currentScale}
           tuning={tuning}
           frets={frets}
           strings={strings}

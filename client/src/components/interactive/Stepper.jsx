@@ -14,10 +14,16 @@ export default function Stepper({ label, value, action, min, max }) {
 
   return (
     <div className="stepper">
-      <label>{label}</label>
-      <button onClick={decrement}>-</button>
-      <div>{value}</div>
-      <button onClick={increment}>+</button>
+      <label className="stepper-label">{label}</label>
+      <div className="stepper-inner">
+        <button className="stepper-button" onClick={decrement}>
+          -
+        </button>
+        <div className="stepper-counter">{value}</div>
+        <button className="stepper-button" onClick={increment}>
+          +
+        </button>
+      </div>
     </div>
   );
 }

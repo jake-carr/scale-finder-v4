@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../constants/theme-context';
 import CircularButton from '../interactive/CircularButton.jsx';
 
 export default function Banner({ toggleTheme }) {
+  const theme = useContext(ThemeContext);
   return (
-    <div className="banner">
+    <div
+      className="banner"
+      style={{ backgroundColor: theme.primary, color: theme.text }}
+    >
       <div className="container">
         <CircularButton title="randomize" />
         <CircularButton title="reset" />

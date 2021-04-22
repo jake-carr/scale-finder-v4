@@ -2,6 +2,7 @@ import React, {createContext} from 'react';
 
 export const themes = {
   light: {
+    // todo
     background: '95f9e3',
     text: '564946',
     primary: '49d49d',
@@ -9,11 +10,16 @@ export const themes = {
     tertiary: '558564',
   },
   dark: {
-    background: '4b4237',
-    text: 'ede7d9',
+    background: '#202020',
+    text: '#edf5e1',
+    // placeholders
     primary: 'd5a021',
     secondary: 'a49694',
     tertiary: '736b60',
+    // frets
+    highlighted: 'rgb(35, 196, 134)',
+    scale: 'rgba(124, 11, 168, 0.877)',
+    unused: '#5f5f5f'
   }
 }
 

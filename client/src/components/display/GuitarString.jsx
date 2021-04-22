@@ -13,6 +13,7 @@ export default function GuitarString({
   degreeNotation,
   preset,
   changeTuning,
+  currentScale,
 }) {
   const renderFrets = () => {
     const root = tuning[stringIndex];
@@ -37,6 +38,7 @@ export default function GuitarString({
           degrees={degrees}
           degreeNotation={degreeNotation}
           label={label}
+          currentScale={currentScale}
         />
       );
     });

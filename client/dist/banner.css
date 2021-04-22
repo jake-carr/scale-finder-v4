@@ -12,7 +12,6 @@ body {
 .banner {
   height: 3rem;
   width: 100vw;
-  background-color: purple;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -20,14 +19,12 @@ body {
 
 .banner-title {
   font-size: 3rem;
-  color: white;
 }
 
 .circular-button {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  border: 2px solid pink;
 }
 
 .container {

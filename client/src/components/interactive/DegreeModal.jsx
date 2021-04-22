@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function DegreeModal({ notation, select }) {
-  const options = ['Numeric', 'Roman Numeral', 'Indian sargams'];
+  const options = ['Numeric', 'Roman numeral', 'Indian sargams'];
 
   return (
     <div className="degree-modal">

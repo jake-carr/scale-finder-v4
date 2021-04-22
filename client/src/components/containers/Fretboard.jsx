@@ -6,6 +6,7 @@ import { tunings } from '../../constants/tunings';
 import { ThemeContext } from '../../constants/theme-context';
 
 export default function Fretboard({
+  currentScale,
   tuning,
   frets,
   sharps,
@@ -48,6 +49,7 @@ export default function Fretboard({
           degreeNotation={degreeNotation}
           changeTuning={changeTuning}
           preset={preset}
+          currentScale={currentScale}
         />
       );
     });

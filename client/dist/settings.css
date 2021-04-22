@@ -12,7 +12,26 @@
 
 .stepper {
   display: flex;
+  flex-direction: column;
+}
+
+.stepper-label {
+  font-size: 1rem;
+}
+
+.stepper-inner {
+  display: flex;
   flex-direction: row;
+}
+
+.stepper-counter {
+  font-weight: bold;
+}
+
+.stepper-button {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 .degree-modal {
