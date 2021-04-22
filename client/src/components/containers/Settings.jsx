@@ -23,6 +23,7 @@ export default function Settings({
   toggleDegrees,
   degreeNotation,
   changeDegreeNotation,
+  tuning,
 }) {
   const noteOptions = getAlteration(sharps);
 
@@ -43,7 +44,7 @@ export default function Settings({
       <div className="selectors">
         <Stepper
           label="Strings"
-          value={strings}
+          value={tuning.length}
           action={changeStringCount}
           min={4}
           max={12}

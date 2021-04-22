@@ -48,6 +48,28 @@ export default function App() {
     changeScale(createScale(note, scales[scale].pattern));
   }, [note, scale]);
 
+  useEffect(() => {
+    if (strings < tuning.length) {
+      let update = [...tuning];
+      update.length = strings;
+      changeTuning(update);
+    }
+    if (strings > tuning.length) {
+      let update = [...tuning];
+      for (let i = strings - tuning.length - 1; i >= 0; i--) {
+        let note = 7; // default note E
+        if (i + tuning.length === 4) {
+          note = 0; // 5th string, A
+        }
+        if (i + tuning.length === 6) {
+          note = 2; // 7th string, B
+        }
+        update.push(note);
+      }
+      changeTuning(update);
+    }
+  }, [strings]);
+
   return (
     <ThemeContext.Provider value={themes[selectedTheme]}>
       <div className="app">
@@ -57,6 +79,7 @@ export default function App() {
           scales={scaleOptions}
           selectScale={selectScale}
           frets={frets}
+          tuning={tuning}
           changeFretCount={changeFretCount}
           strings={strings}
           changeStringCount={changeStringCount}

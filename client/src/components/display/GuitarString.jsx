@@ -11,7 +11,6 @@ export default function GuitarString({
   highlight,
   degrees,
   degreeNotation,
-  preset,
   changeTuning,
   currentScale,
 }) {
@@ -50,7 +49,6 @@ export default function GuitarString({
         change={changeTuning}
         tuning={tuning}
         stringIndex={stringIndex}
-        preset={preset}
         sharps={sharps}
       />
       {renderFrets()}

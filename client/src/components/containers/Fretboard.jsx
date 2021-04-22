@@ -28,10 +28,8 @@ export default function Fretboard({
 
   const tuningOptions = listPresetTunings();
 
-  const [preset, changePreset] = useState(tuning);
-
   const handleSelectPresetTuning = (i) => {
-    changePreset(tunings[i].values);
+    changeTuning(tunings[i].values);
   };
 
   const renderGuitarStrings = () => {
@@ -48,7 +46,6 @@ export default function Fretboard({
           degrees={degrees}
           degreeNotation={degreeNotation}
           changeTuning={changeTuning}
-          preset={preset}
           currentScale={currentScale}
         />
       );

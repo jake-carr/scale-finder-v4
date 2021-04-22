@@ -5,7 +5,6 @@ export default function Tuner({
   change,
   tuning,
   stringIndex,
-  preset,
   sharps,
 }) {
   const parseDown = (n) => {
@@ -27,10 +26,6 @@ export default function Tuner({
     t[stringIndex] = parseUp(t[stringIndex]);
     change(t);
   };
-
-  useEffect(() => {
-    change(preset);
-  }, [preset]);
 
   return (
     <div className="tuner">

@@ -7,6 +7,7 @@ export default function CircularButton({ title, action }) {
       title={title}
       onClick={() => action()}
     >
+      {/* todo: change title to icons, then make title more descriptive for accessibility */}
       {title}
     </button>
   );
