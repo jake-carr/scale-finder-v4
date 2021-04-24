@@ -28,6 +28,8 @@ export default function Fretboard({
 
   const tuningOptions = listPresetTunings();
 
+  const theme = useContext(ThemeContext);
+
   const handleSelectPresetTuning = (i) => {
     changeTuning(tunings[i].values);
   };
@@ -53,7 +55,10 @@ export default function Fretboard({
   };
 
   return (
-    <div className="fretboard-outer">
+    <div
+      className="fretboard-outer"
+      style={{ backgroundColor: theme.gradient2 }}
+    >
       <div className="fretboard">{renderGuitarStrings()}</div>
       <SearchableDropdown
         options={tuningOptions}

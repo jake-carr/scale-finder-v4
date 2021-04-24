@@ -27,12 +27,16 @@ export default function Banner({
   return (
     <div
       className="banner"
-      style={{ backgroundColor: theme.primary, color: theme.text }}
+      style={{
+        backgroundColor: theme.gradient0,
+        color: theme.primary,
+      }}
     >
       <div className="container">
         <CircularButton
           title="Randomize scale and root note."
           action={randomize}
+          spacing={true}
         />
         <CircularButton
           title="Reset to defaults (6 strings, 12 frets, standard tuning)."
@@ -40,10 +44,14 @@ export default function Banner({
         />
       </div>
       <div className="banner-title">Guitar Scale Finder</div>
-      <CircularButton
-        title="Toggle between light and dark theme."
-        action={toggleTheme}
-      />
+      <div className="placeholder"></div>
+      <div className="theme-button">
+        <CircularButton
+          title="Toggle between light and dark theme."
+          action={toggleTheme}
+          emoji={true}
+        />
+      </div>
     </div>
   );
 }

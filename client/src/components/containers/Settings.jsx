@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../constants/theme-context';
+
 import SearchableDropdown from '../interactive/SearchableDropdown.jsx';
 import Stepper from '../interactive/Stepper.jsx';
 import RectangularButton from '../interactive/RectangularButton.jsx';
@@ -30,12 +32,17 @@ export default function Settings({
 }) {
   const noteOptions = getAlteration(sharps);
 
+  const theme = useContext(ThemeContext);
+
   const handleSelectNote = (i) => {
     selectNote(Number(i));
   };
 
   return (
-    <div className="settings">
+    <div
+      className="settings"
+      style={{ backgroundColor: theme.gradient1 }}
+    >
       <div className="selectors">
         <SearchableDropdown
           options={noteOptions}

@@ -1,7 +1,16 @@
 body {
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
   margin: 0;
+}
+
+select:hover,
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
 }
 
 .app {
@@ -10,24 +19,45 @@ body {
 }
 
 .banner {
-  height: 3rem;
-  width: 100vw;
+  height: 10%;
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
 
 .banner-title {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .circular-button {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
+  border: none;
 }
 
 .container {
   display: flex;
   justify-content: left;
+  padding: 1%;
+}
+
+.theme-button {
+  position: fixed;
+  top: 1.5%;
+  right: 1%;
+}
+
+i {
+  font-style: normal;
+}
+
+.emoji-button {
+  background: none;
+  border: none;
+}
+.emoji {
+  justify-content: center;
+  font-size: 2.5rem;
 }

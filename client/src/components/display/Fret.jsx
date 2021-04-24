@@ -16,11 +16,11 @@ export default function Fret({
 
   const colorizeFret = () => {
     if (currentScale[0] === note && highlight) {
-      return theme.highlighted;
+      return theme.secondary;
     } else if (currentScale.includes(note)) {
-      return theme.scale;
+      return theme.primary;
     } else {
-      return theme.unused;
+      return theme.tertiary;
     }
   };
 
@@ -43,8 +43,17 @@ export default function Fret({
 
   return (
     <div className="fret" style={{ backgroundColor: colorizeFret() }}>
-      <div style={{ color: theme.text }}>{displayNote()}</div>
-      <div style={{ color: theme.primary }}>{displayDegree()}</div>
+      <div
+        style={{
+          color:
+            currentScale[0] === note && highlight
+              ? theme.gradient2
+              : theme.text,
+        }}
+      >
+        {displayNote()}
+      </div>
+      <div style={{ color: theme.tertiary }}>{displayDegree()}</div>
       <span className="fret-label">
         {label ? String(label) : null}
       </span>

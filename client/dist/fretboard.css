@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.fretboard-outer {
+  min-height: 60%;
+}
+
 .guitar-string {
   display: flex;
   flex-flow: row nowrap;
