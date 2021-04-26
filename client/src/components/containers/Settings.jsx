@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../../constants/theme-context';
-
 import SearchableDropdown from '../interactive/SearchableDropdown.jsx';
 import Stepper from '../interactive/Stepper.jsx';
 import RectangularButton from '../interactive/RectangularButton.jsx';
 import DegreeModal from '../interactive/DegreeModal.jsx';
+import InfoModal from '../display/InfoModal.jsx';
 import { getAlteration } from '../../constants/utils';
 import { scales } from '../../constants/scales';
 
@@ -30,6 +30,8 @@ export default function Settings({
   note,
   scale,
 }) {
+  const [infoOpen, toggleInfo] = useState(false);
+
   const noteOptions = getAlteration(sharps);
 
   const theme = useContext(ThemeContext);
@@ -43,6 +45,11 @@ export default function Settings({
       className="settings"
       style={{ backgroundColor: theme.gradient1 }}
     >
+      <InfoModal
+        open={infoOpen}
+        close={() => toggleInfo(false)}
+        scale={scale}
+      />
       <div className="selectors">
         <SearchableDropdown
           options={noteOptions}
@@ -54,7 +61,12 @@ export default function Settings({
           action={selectScale}
           value={scale}
         />
-        <button>info</button>
+        <button
+          className="small-circular-button"
+          onClick={() => toggleInfo(!infoOpen)}
+        >
+          i
+        </button>
       </div>
       <div className="selectors">
         <Stepper
@@ -73,11 +85,13 @@ export default function Settings({
         />
       </div>
       <div className="selectors">
-        <RectangularButton
-          title={sharps ? 'b' : '#'}
-          action={toggleSharps}
-          value={sharps}
-        />
+        <button
+          className="small-circular-button"
+          title="Toggle preferred alteration (sharps or flats)."
+          onClick={() => toggleSharps(!sharps)}
+        >
+          {sharps ? '♭' : '♯'}
+        </button>
         <RectangularButton
           title="Highlight root notes"
           action={toggleHighlight}
