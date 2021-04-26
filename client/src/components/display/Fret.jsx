@@ -43,7 +43,7 @@ export default function Fret({
 
   return (
     <div className="fret" style={{ backgroundColor: colorizeFret() }}>
-      <div
+      <span
         style={{
           color:
             currentScale[0] === note && highlight
@@ -52,11 +52,11 @@ export default function Fret({
         }}
       >
         {displayNote()}
-      </div>
-      <div style={{ color: theme.tertiary }}>{displayDegree()}</div>
-      <span className="fret-label">
-        {label ? String(label) : null}
       </span>
+      <span className="fret-degree" style={{ color: theme.tertiary }}>
+        {displayDegree()}
+      </span>
+      <span className="fret-label">{label ? String(label) : ''}</span>
     </div>
   );
 }

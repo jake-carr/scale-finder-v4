@@ -9,35 +9,84 @@
 .selectors {
   display: flex;
   flex-direction: row;
+  margin-bottom: 1.5%;
 }
 
 .stepper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0 5% 1% 5%;
 }
 
 .stepper-label {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .stepper-inner {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .stepper-counter {
-  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .stepper-button {
-  margin: 0;
+  font-size: 1.25rem;
+  margin: 0 0.5rem 0 0.5rem;
   padding: 0;
   border: none;
+  background: none;
+  font-weight: bold;
 }
 
 .degree-modal {
+  position: absolute;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 12%;
+  left: 0.5%;
+  width: 15%;
+  height: 16%;
+  border-radius: 0.1rem;
+  padding: 0 1% 0 1%;
+  font-size: 1rem;
+}
+
+.info-modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 12%;
+  right: 0.5%;
+  width: 30%;
+  height: 16%;
+  border-radius: 0.1rem;
+  padding: 0 1% 0 1%;
+  font-size: 1rem;
+}
+
+.info-modal:hover {
+  cursor: pointer;
+}
+
+.info,
+.qualities {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.info-footer {
+  font-size: 0.75rem;
 }
 
 .degree-option {
@@ -45,13 +94,15 @@
   background: none;
 }
 
-.degree-option#selected {
-  color: blue;
-}
-
 .small-circular-button {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
   border: none;
+}
+
+.rectangular-button {
+  width: 9rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }

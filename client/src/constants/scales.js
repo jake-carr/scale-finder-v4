@@ -26,18 +26,24 @@ const indexToDegreeString = i => {
 }
 
 export const mapQualitiesToStrings = scaleIndex => {
-  return scales[scaleIndex].qualities.map((quality, i) => {
+  let result = [];
+  scales[scaleIndex].qualities.map((quality, i) => {
     switch(quality) {
       case "min":
-        return `Minor ${indexToDegreeString(i)}`
+        result.push(`Minor ${indexToDegreeString(i)}`)
+        break;
       case "maj":
-        return `Major ${indexToDegreeString(i)}`
+        result.push(`Major ${indexToDegreeString(i)}`)
+        break;
       case "dim":
-        return `Diminished ${indexToDegreeString(i)}`
+        result.push(`Diminished ${indexToDegreeString(i)}`)
+        break;
       case "aug":
-        return `Augmented ${indexToDegreeString(i)}`
+        result.push(`Augmented ${indexToDegreeString(i)}`)
+        break;
     }
   })
+  return result.join(', ')
 }
 
 export const listScales = () => {

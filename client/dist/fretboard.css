@@ -15,9 +15,19 @@
   flex-flow: row nowrap;
 }
 
-.fret {
+.tuner {
   display: flex;
   flex-direction: row;
+  margin-top: 0.25rem;
+  margin-right: 0.5rem;
+  height: 2rem;
+  width: 6rem;
+  justify-content: space-between;
+}
+
+.fret {
+  display: flex;
+  flex-flow: row;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -25,4 +35,9 @@
   height: 2rem;
   margin: 0.1rem;
   border-radius: 0.1rem;
+}
+
+.fret-label {
+  position: relative;
+  margin-top: 4rem;
 }

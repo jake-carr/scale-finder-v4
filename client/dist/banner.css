@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+button {
+  transition-duration: 0.25s;
+}
+
 select:hover,
 button:hover {
   cursor: pointer;

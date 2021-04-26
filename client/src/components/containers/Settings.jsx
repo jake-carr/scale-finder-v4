@@ -50,6 +50,11 @@ export default function Settings({
         close={() => toggleInfo(false)}
         scale={scale}
       />
+      <DegreeModal
+        open={degrees}
+        notation={degreeNotation}
+        select={changeDegreeNotation}
+      />
       <div className="selectors">
         <SearchableDropdown
           options={noteOptions}
@@ -63,6 +68,11 @@ export default function Settings({
         />
         <button
           className="small-circular-button"
+          style={{
+            backgroundColor: theme.gradient2,
+            border: `2px solid ${theme.gradient0}`,
+            color: theme.text,
+          }}
           onClick={() => toggleInfo(!infoOpen)}
         >
           i
@@ -85,36 +95,38 @@ export default function Settings({
         />
       </div>
       <div className="selectors">
-        <button
-          className="small-circular-button"
-          title="Toggle preferred alteration (sharps or flats)."
-          onClick={() => toggleSharps(!sharps)}
-        >
-          {sharps ? '♭' : '♯'}
-        </button>
-        <RectangularButton
-          title="Highlight root notes"
-          action={toggleHighlight}
-          value={highlight}
-        />
-        <RectangularButton
-          title={allNotes ? 'Label scale only' : 'Label all notes'}
-          action={toggleAllNotes}
-          value={allNotes}
-        />
         <RectangularButton
           title={
             degrees ? 'Hide scale degrees' : 'Show scale degrees'
           }
           action={toggleDegrees}
           value={degrees}
+          condition={degrees}
         />
-        {degrees ? (
-          <DegreeModal
-            notation={degreeNotation}
-            select={changeDegreeNotation}
-          />
-        ) : null}
+        <RectangularButton
+          title="Highlight root notes"
+          action={toggleHighlight}
+          value={highlight}
+          condition={highlight}
+        />
+        <RectangularButton
+          title={allNotes ? 'Label scale only' : 'Label all notes'}
+          action={toggleAllNotes}
+          value={allNotes}
+        />
+
+        <button
+          className="small-circular-button"
+          style={{
+            backgroundColor: theme.gradient2,
+            border: `2px solid ${theme.gradient0}`,
+            color: theme.text,
+          }}
+          title="Toggle preferred alteration (sharps or flats)."
+          onClick={() => toggleSharps(!sharps)}
+        >
+          {sharps ? '♭' : '♯'}
+        </button>
       </div>
     </div>
   );

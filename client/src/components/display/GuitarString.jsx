@@ -26,7 +26,10 @@ export default function GuitarString({
         note = note - 12;
       }
       let label = null;
-      if (fretLabels.includes(fretNumber) && stringIndex === 5) {
+      if (
+        fretLabels.includes(fretNumber) &&
+        stringIndex === tuning.length - 1
+      ) {
         label = fretNumber;
       }
       return (

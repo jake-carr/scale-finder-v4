@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { ThemeContext } from '../../constants/theme-context';
 import { indexToString } from '../../constants/utils';
 
 export default function Tuner({
@@ -7,6 +8,8 @@ export default function Tuner({
   stringIndex,
   sharps,
 }) {
+  const theme = useContext(ThemeContext);
+
   const parseDown = (n) => {
     return n === 0 ? 11 : n - 1;
   };
@@ -27,11 +30,32 @@ export default function Tuner({
     change(t);
   };
 
+  const buttonStyles = () => {
+    return {
+      backgroundColor: theme.gradient0,
+      color: theme.text,
+    };
+  };
+
   return (
     <div className="tuner">
-      <button onClick={tuneDown}>-</button>
-      <div>{indexToString(tuning[stringIndex], sharps)}</div>
-      <button onClick={tuneUp}>+</button>
+      <button
+        style={buttonStyles()}
+        className="small-circular-button"
+        onClick={tuneDown}
+      >
+        -
+      </button>
+      <div style={{ color: theme.text, paddingTop: '0.25rem' }}>
+        {indexToString(tuning[stringIndex], sharps)}
+      </div>
+      <button
+        style={buttonStyles()}
+        className="small-circular-button"
+        onClick={tuneUp}
+      >
+        +
+      </button>
     </div>
   );
 }
