@@ -20,7 +20,7 @@ export default function Fret({
     } else if (currentScale.includes(note)) {
       return theme.primary;
     } else {
-      return theme.tertiary;
+      return theme.gradient0;
     }
   };
 
@@ -47,7 +47,7 @@ export default function Fret({
         style={{
           color:
             currentScale[0] === note && highlight
-              ? theme.gradient2
+              ? theme.gradient3
               : theme.text,
         }}
       >

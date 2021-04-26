@@ -2,6 +2,7 @@ body {
   width: 100vw;
   overflow-x: hidden;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 button {
@@ -27,24 +28,12 @@ button:focus {
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner-title {
-  font-size: 4rem;
-}
-
-.circular-button {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: none;
-}
-
-.container {
-  display: flex;
-  justify-content: left;
-  padding: 1%;
+  font-size: 2rem;
 }
 
 .theme-button {
@@ -58,9 +47,10 @@ i {
 }
 
 .emoji-button {
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
 }
+
 .emoji {
   justify-content: center;
   font-size: 2.5rem;

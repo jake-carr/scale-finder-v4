@@ -5,7 +5,7 @@ import {
   mapQualitiesToStrings,
 } from '../../constants/scales';
 
-export default function InfoModal({ open, close, scale }) {
+export default function InfoModal({ open, scale }) {
   const theme = useContext(ThemeContext);
   return (
     <React.Fragment>
@@ -13,22 +13,14 @@ export default function InfoModal({ open, close, scale }) {
         <div
           className="info-modal"
           style={{
-            border: `2px solid ${theme.primary}`,
             color: theme.text,
           }}
-          onClick={() => close()}
         >
           <div className="info" style={{ color: theme.secondary }}>
             {scales[scale].info}
           </div>
           <div className="qualities">
             Triad qualities: {mapQualitiesToStrings(scale)}
-          </div>
-          <div
-            className="info-footer"
-            style={{ color: theme.tertiary }}
-          >
-            Click inside to close.
           </div>
         </div>
       ) : null}

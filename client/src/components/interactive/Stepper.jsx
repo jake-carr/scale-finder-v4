@@ -17,26 +17,29 @@ export default function Stepper({ label, value, action, min, max }) {
 
   return (
     <div className="stepper">
-      <label className="stepper-label" style={{ color: theme.text }}>
-        {label}
+      <label
+        className="stepper-label"
+        style={{ color: theme.gradient0 }}
+      >
+        {label.toUpperCase()}
       </label>
       <div className="stepper-inner">
         <button
           className="stepper-button"
-          style={{ color: theme.primary }}
+          style={{ color: theme.tertiaryAccent }}
           onClick={decrement}
         >
           -
         </button>
         <div
           className="stepper-counter"
-          style={{ color: theme.text }}
+          style={{ color: theme.tertiaryAccent }}
         >
           {value}
         </div>
         <button
           className="stepper-button"
-          style={{ color: theme.primary }}
+          style={{ color: theme.tertiaryAccent }}
           onClick={increment}
         >
           +

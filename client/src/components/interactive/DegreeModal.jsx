@@ -5,7 +5,7 @@ export default function DegreeModal({ open, notation, select }) {
   const options = ['Numeric', 'Roman numeral', 'Indian sargams'];
   const stylize = (notation, option) => {
     return notation === option
-      ? { color: theme.secondary }
+      ? { color: theme.tertiary }
       : { color: theme.text };
   };
 
@@ -13,7 +13,12 @@ export default function DegreeModal({ open, notation, select }) {
     <React.Fragment>
       {open ? (
         <div className="degree-modal">
-          <div style={{ color: theme.tertiary, marginBottom: '1%' }}>
+          <div
+            style={{
+              color: theme.tertiaryAccent,
+              marginBottom: '1%',
+            }}
+          >
             Degree Notation
           </div>
           {options.map((opt, i) => {

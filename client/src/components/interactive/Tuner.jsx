@@ -32,7 +32,8 @@ export default function Tuner({
 
   const buttonStyles = () => {
     return {
-      backgroundColor: theme.gradient0,
+      backgroundColor: theme.tuning,
+      border: `2px solid ${theme.tuningAccent}`,
       color: theme.text,
     };
   };
@@ -41,7 +42,7 @@ export default function Tuner({
     <div className="tuner">
       <button
         style={buttonStyles()}
-        className="small-circular-button"
+        className="tuning-button"
         onClick={tuneDown}
       >
         -
@@ -51,7 +52,7 @@ export default function Tuner({
       </div>
       <button
         style={buttonStyles()}
-        className="small-circular-button"
+        className="tuning-button"
         onClick={tuneUp}
       >
         +

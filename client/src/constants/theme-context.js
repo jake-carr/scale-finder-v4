@@ -20,15 +20,20 @@ export const themes = {
     gradient2: '#FFE7D6'
   },
   dark: {
-    ref: 'dark',
-    primary: '#564787',
-    secondary: '#23B5D3',
-    tertiary: '#A2AEBB',
-    text: '#DFE0E2',
-    link: '#84DAEB',
-    gradient0: '#342A50',
-    gradient1: '#2C2343',
-    gradient2: '#231C35'
+    gradient0: '#5f5f5f',
+    gradient1: '#4b4b4b',
+    gradient2: '#363636',
+    gradient3: '#2c2c2c',
+    primary: 'rgba(124, 11, 168, 0.877)',
+    primaryAccent: 'rgba(165, 9, 226, 0.877)',
+    secondary: 'rgb(35, 196, 134)',
+    secondaryAccent: 'rgb(52, 218, 154)',
+    tertiary: '#34f8ff',
+    tertiaryAccent: '#c8fdff',
+    text: '#edf5e1',
+    tuning: '#f52f80',
+    tuningAccent: '#ff5ca0',
+    ref: 'dark'
   }
 }
 

@@ -12,14 +12,16 @@ export default function Footer() {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '10%',
-        backgroundColor: theme.gradient1,
+        backgroundColor: theme.gradient2,
       }}
     >
-      <span style={{ color: theme.link, marginRight: '1%' }}>
+      <span style={{ color: theme.tertiary, marginRight: '1%' }}>
         App Store Link
       </span>
-      <span style={{ color: theme.link, marginRight: '1%' }}>•</span>
-      <span style={{ color: theme.link }}>Contact</span>
+      <span style={{ color: theme.tertiary, marginRight: '1%' }}>
+        •
+      </span>
+      <span style={{ color: theme.tertiary }}>Contact</span>
     </div>
   );
 }

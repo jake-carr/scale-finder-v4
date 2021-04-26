@@ -7,6 +7,7 @@ import Banner from './containers/Banner';
 import Settings from './containers/Settings';
 import Fretboard from './containers/Fretboard';
 import Footer from './containers/Footer';
+import CircularButton from './interactive/CircularButton';
 
 export default function App() {
   // App
@@ -73,14 +74,13 @@ export default function App() {
   return (
     <ThemeContext.Provider value={themes[selectedTheme]}>
       <div className="app">
-        <Banner
-          toggleTheme={handleToggleTheme}
-          changeTuning={changeTuning}
-          selectNote={selectNote}
-          selectScale={selectScale}
-          changeFretCount={changeFretCount}
-          changeStringCount={changeStringCount}
-        />
+        <div className="theme-button">
+          <CircularButton
+            title="Toggle between light and dark theme."
+            action={toggleTheme}
+            emoji={true}
+          />
+        </div>
         <Settings
           note={note}
           scale={scale}

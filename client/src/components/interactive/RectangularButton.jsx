@@ -11,17 +11,28 @@ export default function RectangularButton({
   const theme = useContext(ThemeContext);
 
   const stylize = () => {
-    return condition
-      ? {
-          backgroundColor: theme.secondary,
-          border: `2px solid ${theme.gradient1}`,
-          color: theme.gradient2,
-        }
-      : {
-          backgroundColor: theme.gradient2,
-          border: `2px solid ${theme.gradient0}`,
-          color: theme.text,
-        };
+    if (value) {
+      switch (condition) {
+        case 'highlight':
+          return {
+            backgroundColor: theme.secondary,
+            border: `2px solid ${theme.secondaryAccent}`,
+            color: theme.gradient3,
+          };
+        case 'degrees':
+          return {
+            backgroundColor: theme.tertiary,
+            border: `2px solid ${theme.tertiaryAccent}`,
+            color: theme.gradient3,
+          };
+      }
+    } else {
+      return {
+        backgroundColor: theme.gradient3,
+        border: `2px solid ${theme.gradient1}`,
+        color: theme.text,
+      };
+    }
   };
 
   return (

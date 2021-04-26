@@ -31,9 +31,13 @@ export default function CircularButton({
       <button
         className={emoji ? 'emoji-button' : 'circular-button'}
         title={title}
+        style={{
+          backgroundColor: theme.primary,
+          border: `2px solid ${theme.primaryAccent}`,
+          color: theme.text,
+        }}
         onClick={() => action()}
       >
-        {/* todo: change title to icons, then make title more descriptive for accessibility */}
         {mapTitleToIcon()}
       </button>
       {spacing ? <div style={{ marginRight: '0.5rem' }}></div> : null}
