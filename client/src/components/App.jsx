@@ -77,7 +77,7 @@ export default function App() {
         <div className="theme-button">
           <CircularButton
             title="Toggle between light and dark theme."
-            action={toggleTheme}
+            action={handleToggleTheme}
             emoji={true}
           />
         </div>

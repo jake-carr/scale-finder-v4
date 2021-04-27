@@ -9,15 +9,20 @@ import React, {createContext} from 'react';
 
 export const themes = {
   light: {
-    ref: 'light',
-    primary: '#63D471',
-    secondary: '#69FFF1',
-    tertiary: '#E365C1',
-    text: '#060D0F',
-    link: '#A12B9B',
-    gradient0: '#F5F5F5',
-    gradient1: '#FFF3EB',
-    gradient2: '#FFE7D6'
+    gradient0: '#D6D6D6',
+    gradient1: '#E0E0E0',
+    gradient2: '#EBEBEB',
+    gradient3: '#F5F5F5',
+    primary: '#34EAC5',
+    primaryAccent: '#17DEB6',
+    secondary: '#7765E3',
+    secondaryAccent: '#6853DF',
+    tertiary: 'FF1053',
+    tertiaryAccent: '#FF0A50',
+    text: '#141414',
+    tuning: '#F2BB05',
+    tuningAccent: '#FAC30F',
+    ref: 'light'
   },
   dark: {
     gradient0: '#5f5f5f',

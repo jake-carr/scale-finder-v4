@@ -17,10 +17,7 @@ export default function Stepper({ label, value, action, min, max }) {
 
   return (
     <div className="stepper">
-      <label
-        className="stepper-label"
-        style={{ color: theme.gradient0 }}
-      >
+      <label className="stepper-label" style={{ color: theme.text }}>
         {label.toUpperCase()}
       </label>
       <div className="stepper-inner">
