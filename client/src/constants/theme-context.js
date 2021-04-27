@@ -21,7 +21,7 @@ export const themes = {
     tertiaryAccent: '#FF0A50',
     text: '#141414',
     tuning: '#F2BB05',
-    tuningAccent: '#FAC30F',
+    tuningAccent: '#C89A04',
     ref: 'light'
   },
   dark: {
@@ -34,7 +34,7 @@ export const themes = {
     secondary: 'rgb(35, 196, 134)',
     secondaryAccent: 'rgb(52, 218, 154)',
     tertiary: '#34f8ff',
-    tertiaryAccent: '#c8fdff',
+    tertiaryAccent: '#00D9E0',
     text: '#edf5e1',
     tuning: '#f52f80',
     tuningAccent: '#ff5ca0',

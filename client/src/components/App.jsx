@@ -3,7 +3,10 @@ import { ThemeContext, themes } from '../constants/theme-context';
 import { tunings } from '../constants/tunings';
 import { indexToString, getAlteration } from '../constants/utils';
 import { createScale, scales, listScales } from '../constants/scales';
-import Banner from './containers/Banner';
+import {
+  saveLocally,
+  retrieveLocalStorage,
+} from '../constants/storage';
 import Settings from './containers/Settings';
 import Fretboard from './containers/Fretboard';
 import Footer from './containers/Footer';
@@ -45,10 +48,86 @@ export default function App() {
     createScale(note, scales[scale].pattern),
   );
 
+  // Hooks
+
+  // Local storage toggle
+  useEffect(() => {
+    if (saveSettings) {
+      saveLocally('theme', selectedTheme);
+      saveLocally('note', note);
+      saveLocally('scale', scale);
+      saveLocally('sharps', sharps);
+      saveLocally('highlight', highlight);
+      saveLocally('allNotes', allNotes);
+      saveLocally('degrees', degrees);
+      saveLocally('degreeNotation', degreeNotation);
+      saveLocally('tuning', tuning);
+      saveLocally('frets', frets);
+      saveLocally('strings', strings);
+      saveLocally('saveSettings', saveSettings);
+    }
+  }, [saveSettings]);
+
+  // Save each setting change in memory while storage is enabled
+  useEffect(() => {
+    if (saveSettings) {
+      saveLocally('theme', selectedTheme);
+      saveLocally('note', note);
+      saveLocally('scale', scale);
+      saveLocally('sharps', sharps);
+      saveLocally('highlight', highlight);
+      saveLocally('allNotes', allNotes);
+      saveLocally('degrees', degrees);
+      saveLocally('degreeNotation', degreeNotation);
+      saveLocally('tuning', tuning);
+      saveLocally('frets', frets);
+      saveLocally('strings', strings);
+    }
+  }, [
+    selectedTheme,
+    note,
+    scale,
+    sharps,
+    highlight,
+    allNotes,
+    degrees,
+    degreeNotation,
+    tuning,
+    frets,
+    strings,
+  ]);
+
+  // Check local storage on load, use it for state if it exists
+  useEffect(() => {
+    const storage = retrieveLocalStorage();
+    if (Object.keys(storage).length) {
+      selectNote(storage.note);
+      selectScale(storage.scale);
+      toggleTheme(storage.theme);
+      toggleSaveSettings(storage.saveSettings);
+      toggleSharps(storage.sharps);
+      toggleHighlight(storage.highlight);
+      toggleAllNotes(storage.allNotes);
+      toggleDegrees(storage.degrees);
+      changeDegreeNotation(storage.degreeNotation);
+      changeTuning(storage.tuning);
+      changeFretCount(storage.frets);
+      changeStringCount(storage.strings);
+    }
+  }, []);
+
+  // Update page background color on theme change
+  useEffect(() => {
+    document.body.style.backgroundColor =
+      themes[selectedTheme].primary;
+  }, [selectedTheme]);
+
+  // Update scale
   useEffect(() => {
     changeScale(createScale(note, scales[scale].pattern));
   }, [note, scale]);
 
+  // Add or remove strings
   useEffect(() => {
     if (strings < tuning.length) {
       let update = [...tuning];

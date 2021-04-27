@@ -28,10 +28,27 @@ select {
   margin-right: 0.5rem;
   height: 2rem;
   font-size: 1.25rem;
+  border-radius: 0.25rem;
+  transition-duration: 0.25s;
+}
+
+select:hover {
+  border: 2px solid #202020 !important;
+  color: #202020 !important;
+  background: #fefefe !important;
 }
 
 select:focus {
   outline: none;
+}
+
+.dropdown-label {
+  position: relative;
+  height: 0;
+  left: 0.1rem;
+  bottom: 1.1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
 .selectors {

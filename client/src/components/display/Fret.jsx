@@ -42,21 +42,33 @@ export default function Fret({
   };
 
   return (
-    <div className="fret" style={{ backgroundColor: colorizeFret() }}>
-      <span
-        style={{
-          color:
-            currentScale[0] === note && highlight
-              ? theme.gradient3
-              : theme.text,
-        }}
+    <React.Fragment>
+      <div
+        className="fret"
+        style={{ backgroundColor: colorizeFret() }}
       >
-        {displayNote()}
-      </span>
-      <span className="fret-degree" style={{ color: theme.tertiary }}>
-        {displayDegree()}
-      </span>
-      <span className="fret-label">{label ? String(label) : ''}</span>
-    </div>
+        <span
+          style={{
+            color:
+              currentScale[0] === note && highlight
+                ? theme.gradient3
+                : theme.text,
+          }}
+        >
+          {displayNote()}
+        </span>
+        <span
+          className="fret-degree"
+          style={{ color: theme.tertiary }}
+        >
+          {displayDegree()}
+        </span>
+      </div>
+      {label ? (
+        <span className="fret-label" style={{ color: theme.text }}>
+          {String(label)}
+        </span>
+      ) : null}
+    </React.Fragment>
   );
 }

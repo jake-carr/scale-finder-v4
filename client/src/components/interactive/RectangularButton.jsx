@@ -25,6 +25,12 @@ export default function RectangularButton({
             border: `2px solid ${theme.tertiaryAccent}`,
             color: theme.gradient3,
           };
+        default:
+          return {
+            backgroundColor: theme.gradient3,
+            border: `2px solid ${theme.gradient1}`,
+            color: theme.text,
+          };
       }
     } else {
       return {

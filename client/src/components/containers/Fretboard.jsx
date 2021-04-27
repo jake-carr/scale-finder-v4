@@ -60,14 +60,16 @@ export default function Fretboard({
       style={{ backgroundColor: theme.gradient3 }}
     >
       <div className="fretboard">{renderGuitarStrings()}</div>
-      <div className="tuning-container">
+      <div className="tuning-dropdown-container">
         <SearchableDropdown
           options={tuningOptions}
           action={handleSelectPresetTuning}
-          // TODO: needs a value in order to update dynamically when reset to defaults button is clicked.
+          tuning={tuning}
+          value={tuning.name}
+          name={'Tuning'}
         />
-        <Checkbox on={saveSettings} toggle={toggleSaveSettings} />
       </div>
+      <Checkbox on={saveSettings} toggle={toggleSaveSettings} />
     </div>
   );
 }

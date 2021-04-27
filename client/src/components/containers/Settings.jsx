@@ -79,11 +79,13 @@ export default function Settings({
             options={noteOptions}
             action={handleSelectNote}
             value={note}
+            name={'Root'}
           />
           <SearchableDropdown
             options={scales}
             action={selectScale}
             value={scale}
+            name={'Scale'}
           />
           <button
             className="small-circular-button"
