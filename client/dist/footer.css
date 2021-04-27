@@ -3,11 +3,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  min-height: 10%;
+  min-height: 5%;
+  max-height: 10%;
 }
 
 .footer a {
-  font-size: 1.2rem;
+  font-size: 1rem;
   transition-duration: 0.25s;
   text-decoration: none;
 }

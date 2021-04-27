@@ -9,14 +9,14 @@ export default function Footer() {
       style={{ backgroundColor: theme.gradient2 }}
     >
       <a
-        style={{ color: theme.tertiary, marginRight: '1%' }}
+        style={{ color: theme.tertiary, marginRight: '0.5rem' }}
         rel="noopener noreferrer"
-        href="mailto: guitarscalefinder@gmail.com"
+        href="mailto: jake.ralph.carr@gmail.com"
         target="_blank"
       >
         Contact
       </a>
-      <span style={{ color: theme.tertiary, marginRight: '1%' }}>
+      <span style={{ color: theme.tertiary, marginRight: '0.5rem' }}>
         •
       </span>
       <a
@@ -25,7 +25,7 @@ export default function Footer() {
         href="https://apps.apple.com/us/app/guitar-scale-finder/id1487884068"
         target="_blank"
       >
-        Download on the App Store (free)
+        Download on the App Store (free, no ads)
       </a>
     </div>
   );
