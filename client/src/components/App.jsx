@@ -52,7 +52,7 @@ export default function App() {
 
   // Local storage toggle
   useEffect(() => {
-    if (saveSettings) {
+    if (saveSettings === true) {
       saveLocally('theme', selectedTheme);
       saveLocally('note', note);
       saveLocally('scale', scale);
@@ -64,7 +64,7 @@ export default function App() {
       saveLocally('tuning', tuning);
       saveLocally('frets', frets);
       saveLocally('strings', strings);
-      saveLocally('saveSettings', saveSettings);
+      saveLocally('saveSettings', true);
     }
   }, [saveSettings]);
 
@@ -100,7 +100,7 @@ export default function App() {
   // Check local storage on load, use it for state if it exists
   useEffect(() => {
     const storage = retrieveLocalStorage();
-    if (Object.keys(storage).length) {
+    if (storage.saveSettings) {
       selectNote(storage.note);
       selectScale(storage.scale);
       toggleTheme(storage.theme);

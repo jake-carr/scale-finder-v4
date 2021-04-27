@@ -46,6 +46,10 @@
   transition-duration: 0.25s;
 }
 
+.fret-note {
+  width: 20;
+}
+
 .fret-label {
   position: relative;
   width: 0;
@@ -56,10 +60,9 @@
 .fret-degree {
   position: relative;
   width: 0;
-  left: 0.5rem;
-  bottom: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: bold;
+  left: 0.3rem;
+  bottom: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .tuning-button {

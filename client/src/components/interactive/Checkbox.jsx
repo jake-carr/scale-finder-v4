@@ -1,8 +1,18 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../constants/theme-context';
+import { saveLocally } from '../../constants/storage';
 
 export default function Checkbox({ on, toggle }) {
   const theme = useContext(ThemeContext);
+  const handleToggle = () => {
+    if (!on) {
+      toggle(true);
+    } else {
+      toggle(false);
+      saveLocally('saveSettings', false);
+    }
+  };
+
   return (
     <div className="checkbox">
       <input
@@ -14,13 +24,13 @@ export default function Checkbox({ on, toggle }) {
         name="saveSettings"
         type="checkbox"
         checked={on}
-        onChange={() => toggle(!on)}
+        onChange={() => handleToggle()}
       />
       <label
         className="checkbox-label"
         style={{ color: theme.text }}
         htmlFor="saveSettings"
-        onClick={() => toggle(!on)}
+        onClick={() => handleToggle()}
       >
         Remember my settings
       </label>

@@ -48,6 +48,7 @@ export default function Fret({
         style={{ backgroundColor: colorizeFret() }}
       >
         <span
+          className="fret-note"
           style={{
             color:
               currentScale[0] === note && highlight
