@@ -55,6 +55,8 @@ export default function GuitarString({
         tuning={tuning}
         stringIndex={stringIndex}
         sharps={sharps}
+        currentScale={currentScale}
+        highlight={highlight}
       />
       {renderFrets()}
     </div>

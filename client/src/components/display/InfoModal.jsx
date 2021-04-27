@@ -16,7 +16,10 @@ export default function InfoModal({ open, scale }) {
             color: theme.text,
           }}
         >
-          <div className="info" style={{ color: theme.secondary }}>
+          <div
+            className="info"
+            style={{ color: theme.secondary, fontWeight: 'bold' }}
+          >
             {scales[scale].info}
           </div>
           <div className="qualities">

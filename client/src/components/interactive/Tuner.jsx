@@ -7,6 +7,8 @@ export default function Tuner({
   tuning,
   stringIndex,
   sharps,
+  highlight,
+  currentScale,
 }) {
   const theme = useContext(ThemeContext);
 
@@ -30,6 +32,16 @@ export default function Tuner({
     change(t);
   };
 
+  const colorizeStringLabel = () => {
+    if (currentScale[0] === tuning[stringIndex] && highlight) {
+      return theme.secondary;
+    } else if (currentScale.includes(tuning[stringIndex])) {
+      return theme.primaryAccent; // better contrast on gradient3 background than primary
+    } else {
+      return theme.text;
+    }
+  };
+
   const buttonStyles = () => {
     return {
       backgroundColor: theme.tuning,
@@ -47,7 +59,13 @@ export default function Tuner({
       >
         -
       </button>
-      <div style={{ color: theme.text, paddingTop: '0.25rem' }}>
+      <div
+        style={{
+          color: colorizeStringLabel(),
+          fontWeight: 'bold',
+          paddingTop: '0.25rem',
+        }}
+      >
         {indexToString(tuning[stringIndex], sharps)}
       </div>
       <button
