@@ -1,0 +1,35 @@
+/* Web app will support an actual mobile layout in next version */
+
+body {
+  background-color: #2c2c2c;
+}
+
+.mobile-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.mobile-page p {
+  font-size: 1.5rem;
+  color: #edf5e1;
+}
+
+.mobile-link {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition-duration: 0.25s;
+  color: rgba(165, 9, 226);
+}
+
+.mobile-link#contact {
+  color: rgb(35, 196, 134);
+}
+
+.mobile-link:hover {
+  color: rgb(36, 169, 231) !important;
+}

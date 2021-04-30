@@ -44,6 +44,7 @@ export default function RectangularButton({
   return (
     <button
       className="rectangular-button"
+      title={title}
       onClick={() => action(!value)}
       style={stylize()}
     >

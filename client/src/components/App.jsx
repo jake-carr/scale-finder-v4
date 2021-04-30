@@ -7,6 +7,7 @@ import {
   saveLocally,
   retrieveLocalStorage,
 } from '../constants/storage';
+import MobilePage from './containers/MobilePage';
 import Settings from './containers/Settings';
 import Fretboard from './containers/Fretboard';
 import Footer from './containers/Footer';
@@ -49,6 +50,12 @@ export default function App() {
   const [currentScale, changeScale] = useState(
     createScale(note, scales[scale].pattern),
   );
+
+  let isMobile = false;
+
+  if (/Mobi/.test(navigator.userAgent)) {
+    isMobile = true;
+  }
 
   // Hooks
 
@@ -120,8 +127,10 @@ export default function App() {
 
   // Update page background color on theme change
   useEffect(() => {
-    document.body.style.backgroundColor =
-      themes[selectedTheme].primary;
+    if (!isMobile) {
+      document.body.style.backgroundColor =
+        themes[selectedTheme].primary;
+    }
   }, [selectedTheme]);
 
   // Update scale
@@ -151,6 +160,10 @@ export default function App() {
       changeTuning(update);
     }
   }, [strings]);
+
+  if (isMobile) {
+    return <MobilePage />;
+  }
 
   return (
     <ThemeContext.Provider value={themes[selectedTheme]}>

@@ -14,12 +14,11 @@ export default function DegreeModal({ open, notation, select }) {
       <div
         style={{
           color: theme.tertiaryAccent,
-          fontSize: '1rem',
-          fontWeight: 'bold',
-          marginBottom: '0.5rem',
+          fontSize: '0.75rem',
+          marginBottom: '0.25rem',
         }}
       >
-        Degree Notation
+        DEGREE NOTATION
       </div>
       <div style={{ display: 'flex', flexFlow: 'row nowrap' }}>
         {options.map((opt, i) => {
