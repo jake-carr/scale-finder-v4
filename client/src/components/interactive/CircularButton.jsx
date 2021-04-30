@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../constants/theme-context';
 
-const icons = {
-  random: <i className="fas fa-dice" />,
-  reset: <i className="fas fa-redo-alt" />,
-  light: <i className="emoji">🌞</i>,
-  dark: <i className="emoji">🌚</i>,
-};
-
 export default function CircularButton({
   title,
   action,
   emoji,
   spacing,
 }) {
+  const icons = {
+    random: <i className="fas fa-dice" />,
+    reset: <i className="fas fa-redo-alt" />,
+    light: <i className="emoji">🌞</i>,
+    dark: <i className="emoji">🌚</i>,
+  };
+
   const theme = useContext(ThemeContext);
   const keyword = title.split(' ')[0];
   const mapTitleToIcon = () => {
