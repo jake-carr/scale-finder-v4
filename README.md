@@ -2,6 +2,8 @@
 
 ## Scale lookup tool for guitar players. Useful for learning scale shapes, practicing in different tunings, or noodling over a jam track.
 
+www.guitarscalefinder.com
+
 ### _New in version 4_:
 
 - `Added a dropdown for preset tunings such as Standard, Drop D, etc. (each string can still be individually tuned)`
@@ -13,5 +15,3 @@
 
 - `Mobile layout `
 - `Metronome`
-
-www.guitarscalefinder.com
