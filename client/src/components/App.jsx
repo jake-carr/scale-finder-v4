@@ -11,6 +11,7 @@ import Settings from './containers/Settings';
 import Fretboard from './containers/Fretboard';
 import Footer from './containers/Footer';
 import CircularButton from './interactive/CircularButton';
+import Checkbox from './interactive/Checkbox.jsx';
 
 export default function App() {
   // App
@@ -153,6 +154,9 @@ export default function App() {
   return (
     <ThemeContext.Provider value={themes[selectedTheme]}>
       <div className="app">
+        <div className="checkbox-container">
+          <Checkbox on={saveSettings} toggle={toggleSaveSettings} />
+        </div>
         <div className="theme-button">
           <CircularButton
             title="Toggle between light and dark theme."
@@ -194,8 +198,6 @@ export default function App() {
           degrees={degrees}
           degreeNotation={degreeNotation}
           changeTuning={changeTuning}
-          saveSettings={saveSettings}
-          toggleSaveSettings={toggleSaveSettings}
         />
         <Footer />
       </div>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../../constants/theme-context';
-import SearchableDropdown from '../interactive/SearchableDropdown.jsx';
+import PrimaryDropdown from '../interactive/PrimaryDropdown.jsx';
 import Stepper from '../interactive/Stepper.jsx';
 import RectangularButton from '../interactive/RectangularButton.jsx';
 import DegreeModal from '../interactive/DegreeModal.jsx';
@@ -68,6 +68,26 @@ export default function Settings({
       </div>
       <div className="settings-container-inner">
         <div className="selectors">
+          <Stepper
+            label="Strings"
+            value={tuning.length}
+            action={changeStringCount}
+            min={4}
+            max={12}
+          />
+          <Stepper
+            label="Frets"
+            value={frets}
+            action={changeFretCount}
+            min={12}
+            max={24}
+          />
+          <CircularButton
+            title="Reset to defaults (6 strings, 12 frets, standard tuning)."
+            action={resetToDefaults}
+          />
+        </div>
+        <div className="selectors">
           <div className="container">
             <CircularButton
               title="Randomize scale and root note."
@@ -75,16 +95,17 @@ export default function Settings({
               spacing={true}
             />
           </div>
-          <SearchableDropdown
+          <PrimaryDropdown
             options={noteOptions}
             action={handleSelectNote}
-            value={note}
+            val={note}
             name={'Root'}
+            sharps={sharps}
           />
-          <SearchableDropdown
+          <PrimaryDropdown
             options={scales}
             action={selectScale}
-            value={scale}
+            val={scale}
             name={'Scale'}
           />
           <button
@@ -107,26 +128,7 @@ export default function Settings({
             i
           </button>
         </div>
-        <div className="selectors">
-          <Stepper
-            label="Strings"
-            value={tuning.length}
-            action={changeStringCount}
-            min={4}
-            max={12}
-          />
-          <Stepper
-            label="Frets"
-            value={frets}
-            action={changeFretCount}
-            min={12}
-            max={24}
-          />
-          <CircularButton
-            title="Reset to defaults (6 strings, 12 frets, standard tuning)."
-            action={resetToDefaults}
-          />
-        </div>
+
         <div className="selectors">
           <RectangularButton
             title={

@@ -1,8 +1,6 @@
 import React, { useState, useContext } from 'react';
 import GuitarString from '../display/GuitarString.jsx';
-import SearchableDropdown from '../interactive/SearchableDropdown.jsx';
-import Checkbox from '../interactive/Checkbox.jsx';
-import { tunings } from '../../constants/tunings';
+import TuningDropdown from '../interactive/TuningDropdown.jsx';
 import { ThemeContext } from '../../constants/theme-context';
 
 export default function Fretboard({
@@ -15,24 +13,8 @@ export default function Fretboard({
   degrees,
   degreeNotation,
   changeTuning,
-  saveSettings,
-  toggleSaveSettings,
 }) {
-  const listPresetTunings = () => {
-    let list = [];
-    for (let tuning of tunings) {
-      list.push(tuning.name);
-    }
-    return list;
-  };
-
-  const tuningOptions = listPresetTunings();
-
   const theme = useContext(ThemeContext);
-
-  const handleSelectPresetTuning = (i) => {
-    changeTuning(tunings[i].values);
-  };
 
   const renderGuitarStrings = () => {
     return tuning.map((note, i) => {
@@ -61,15 +43,8 @@ export default function Fretboard({
     >
       <div className="fretboard">{renderGuitarStrings()}</div>
       <div className="tuning-dropdown-container">
-        <SearchableDropdown
-          options={tuningOptions}
-          action={handleSelectPresetTuning}
-          tuning={tuning}
-          value={tuning.name}
-          name={'Tuning'}
-        />
+        <TuningDropdown tuning={tuning} changeTuning={changeTuning} />
       </div>
-      <Checkbox on={saveSettings} toggle={toggleSaveSettings} />
     </div>
   );
 }
