@@ -23,7 +23,7 @@ export default function CircularButton({
       case 'Reset':
         return icons.reset;
       case 'Toggle':
-        return theme.ref === 'light' ? icons.light : icons.dark;
+        return theme.ref === 'light' ? icons.dark : icons.light;
     }
   };
   return (
