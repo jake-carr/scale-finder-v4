@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import GuitarString from '../display/GuitarString.jsx';
-import TuningDropdown from '../interactive/TuningDropdown.jsx';
 import { ThemeContext } from '../../constants/theme-context';
 
 export default function Fretboard({
@@ -42,9 +41,6 @@ export default function Fretboard({
       style={{ backgroundColor: theme.gradient3 }}
     >
       <div className="fretboard">{renderGuitarStrings()}</div>
-      <div className="tuning-dropdown-container">
-        <TuningDropdown tuning={tuning} changeTuning={changeTuning} />
-      </div>
     </div>
   );
 }

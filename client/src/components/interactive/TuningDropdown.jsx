@@ -97,7 +97,7 @@ export default function TuningDropdown({ tuning, changeTuning }) {
             cursor: 'pointer',
           }),
         }}
-        id="tuning-dropdown"
+        id="Tuning"
         name="tuning-dropdown"
         className="dropdown-menu"
         menuIsOpen={open}
@@ -105,7 +105,7 @@ export default function TuningDropdown({ tuning, changeTuning }) {
         blurInputOnSelect
         onChange={handleSelectPresetTuning}
         options={tuningOptions}
-        value={{ value: null, label: selection }}
+        value={{ value: selection, label: selection }}
       />
     </div>
   );

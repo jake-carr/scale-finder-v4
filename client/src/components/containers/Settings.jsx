@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../../constants/theme-context';
 import PrimaryDropdown from '../interactive/PrimaryDropdown.jsx';
+import TuningDropdown from '../interactive/TuningDropdown.jsx';
 import Stepper from '../interactive/Stepper.jsx';
 import RectangularButton from '../interactive/RectangularButton.jsx';
 import DegreeModal from '../interactive/DegreeModal.jsx';
@@ -68,6 +69,12 @@ export default function Settings({
       </div>
       <div className="settings-container-inner">
         <div className="selectors">
+          <div className="spacing-right">
+            <CircularButton
+              title="Reset to defaults (6 strings, 12 frets, standard tuning)."
+              action={resetToDefaults}
+            />
+          </div>
           <Stepper
             label="Strings"
             value={tuning.length}
@@ -82,19 +89,17 @@ export default function Settings({
             min={12}
             max={24}
           />
-          <CircularButton
-            title="Reset to defaults (6 strings, 12 frets, standard tuning)."
-            action={resetToDefaults}
-          />
         </div>
         <div className="selectors">
-          <div className="container">
-            <CircularButton
-              title="Randomize scale and root note."
-              action={randomize}
-              spacing={true}
-            />
-          </div>
+          <TuningDropdown
+            tuning={tuning}
+            changeTuning={changeTuning}
+          />
+          <CircularButton
+            title="Randomize scale and root note."
+            action={randomize}
+            spacing={true}
+          />
           <PrimaryDropdown
             options={noteOptions}
             action={handleSelectNote}

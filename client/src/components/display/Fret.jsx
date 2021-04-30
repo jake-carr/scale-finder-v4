@@ -27,17 +27,13 @@ export default function Fret({
   const displayNote = () => {
     if (allNotes || currentScale.includes(note)) {
       return indexToString(note, sharps);
-    } else {
-      return '';
     }
   };
 
   const displayDegree = () => {
     let i = currentScale.indexOf(note);
-    if (degrees && i >= 0) {
+    if (i >= 0) {
       return getDegree(i, degreeNotation);
-    } else {
-      return '';
     }
   };
 
@@ -60,7 +56,16 @@ export default function Fret({
         </span>
         <span
           className="fret-degree"
-          style={{ color: theme.tertiary }}
+          id={degrees ? 'active' : 'hidden'}
+          style={{
+            color: theme.tertiary,
+            left:
+              degreeNotation === 'Numeric'
+                ? '0.5rem'
+                : degreeNotation === 'Roman numeral'
+                ? '0.25rem'
+                : 0,
+          }}
         >
           {displayDegree()}
         </span>

@@ -8,25 +8,24 @@ import {
 export default function InfoModal({ open, scale }) {
   const theme = useContext(ThemeContext);
   return (
-    <React.Fragment>
-      {open ? (
-        <div
-          className="info-modal"
-          style={{
-            color: theme.text,
-          }}
-        >
-          <div
-            className="info"
-            style={{ color: theme.secondary, fontWeight: 'bold' }}
-          >
-            {scales[scale].info}
-          </div>
-          <div className="qualities">
-            Triad qualities: {mapQualitiesToStrings(scale)}
-          </div>
+    <div
+      className="info-modal"
+      id={open ? 'active' : 'hidden'}
+      style={{
+        color: theme.text,
+      }}
+    >
+      <div
+        className="info"
+        style={{ color: theme.secondary, fontWeight: 'bold' }}
+      >
+        {scales[scale].info}
+      </div>
+      {scales[scale].qualities ? (
+        <div className="qualities">
+          Triad qualities: {mapQualitiesToStrings(scale)}
         </div>
       ) : null}
-    </React.Fragment>
+    </div>
   );
 }

@@ -19,6 +19,7 @@ export default function App() {
   const [saveSettings, toggleSaveSettings] = useState(false);
 
   const handleToggleTheme = () => {
+    console.log('hello');
     if (selectedTheme === 'dark') {
       toggleTheme('light');
     } else {

@@ -44,9 +44,14 @@ button:focus {
 }
 
 .theme-button {
-  position: fixed;
+  position: absolute;
   top: 1.5%;
   right: 1%;
+  z-index: 10000;
+}
+
+.theme-button:hover {
+  cursor: pointer;
 }
 
 i {
@@ -64,9 +69,10 @@ i {
 }
 
 .checkbox-container {
-  position: fixed;
+  position: absolute;
   top: 1.5%;
   left: 1%;
+  z-index: 10000;
 }
 
 .checkbox {
@@ -77,7 +83,6 @@ i {
 }
 
 .checkbox > label {
-  color: #34495e;
   padding: 0.5rem 0.25rem;
 }
 
@@ -114,6 +119,7 @@ i {
 
 .checkbox-label:hover {
   cursor: pointer;
+  color: rgb(36, 169, 231) !important;
 }
 
 .dropdown-container {
@@ -122,6 +128,6 @@ i {
   justify-content: left;
   text-align: left;
   align-items: left;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
