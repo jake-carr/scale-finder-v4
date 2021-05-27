@@ -56,7 +56,7 @@ export default function Settings({
   };
 
   return (
-    <div
+    <main
       className="settings"
       style={{ backgroundColor: theme.gradient2 }}
     >
@@ -172,6 +172,6 @@ export default function Settings({
       <div className="settings-container-outer">
         <InfoModal open={infoOpen} scale={scale} />
       </div>
-    </div>
+    </main>
   );
 }
