@@ -1,11 +1,4 @@
-import React, {createContext} from 'react';
-
-// 1
-// import React, { useContext } from 'react';
-// import { ThemeContext } from '../../constants/theme-context';
-
-// // 2
-// const theme = useContext(ThemeContext);
+import React, { createContext } from 'react';
 
 export const themes = {
   light: {
@@ -22,7 +15,7 @@ export const themes = {
     text: '#141414',
     tuning: '#F2BB05',
     tuningAccent: '#C89A04',
-    ref: 'light'
+    ref: 'light',
   },
   dark: {
     gradient0: '#5f5f5f',
@@ -38,14 +31,8 @@ export const themes = {
     text: '#edf5e1',
     tuning: '#f52f80',
     tuningAccent: '#ff5ca0',
-    ref: 'dark'
-  }
-}
+    ref: 'dark',
+  },
+};
 
-export const ThemeContext = React.createContext(
-  themes.dark
-);
-
-// On any component that needs to use theme colors, add:
-// const theme = useContext(ThemeContext)
-// then use theme.primary, etc. as needed for inline stying
+export const ThemeContext = React.createContext(themes.dark);

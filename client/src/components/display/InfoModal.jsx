@@ -23,7 +23,7 @@ export default function InfoModal({ open, scale }) {
       </div>
       {scales[scale].qualities ? (
         <div className="qualities">
-          Triad qualities: {mapQualitiesToStrings(scale)}
+          Chord qualities: {mapQualitiesToStrings(scale)}
         </div>
       ) : null}
     </div>

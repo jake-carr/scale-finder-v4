@@ -24,12 +24,6 @@ export default function Fret({
     }
   };
 
-  const displayNote = () => {
-    if (allNotes || currentScale.includes(note)) {
-      return indexToString(note, sharps);
-    }
-  };
-
   const displayDegree = () => {
     let i = currentScale.indexOf(note);
     if (i >= 0) {
@@ -38,13 +32,18 @@ export default function Fret({
   };
 
   return (
-    <React.Fragment>
+    <>
       <div
         className="fret"
         style={{ backgroundColor: colorizeFret() }}
       >
         <span
           className="fret-note"
+          id={
+            allNotes || currentScale.includes(note)
+              ? 'active'
+              : 'hidden'
+          }
           style={{
             color:
               currentScale[0] === note && highlight
@@ -52,7 +51,7 @@ export default function Fret({
                 : theme.text,
           }}
         >
-          {displayNote()}
+          {indexToString(note, sharps)}
         </span>
         <span
           className="fret-degree"
@@ -75,6 +74,6 @@ export default function Fret({
           {String(label)}
         </span>
       ) : null}
-    </React.Fragment>
+    </>
   );
 }

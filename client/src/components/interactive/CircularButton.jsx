@@ -27,7 +27,7 @@ export default function CircularButton({
     }
   };
   return (
-    <React.Fragment>
+    <>
       <button
         className={emoji ? 'emoji-button' : 'circular-button'}
         title={title}
@@ -41,6 +41,6 @@ export default function CircularButton({
         {mapTitleToIcon()}
       </button>
       {spacing ? <div style={{ marginRight: '0.5rem' }}></div> : null}
-    </React.Fragment>
+    </>
   );
 }

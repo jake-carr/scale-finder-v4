@@ -48,6 +48,15 @@
 
 .fret-note {
   width: 20;
+  transition-duration: 0.25s;
+}
+
+.fret-note#active {
+  opacity: 1;
+}
+
+.fret-note#hidden {
+  opacity: 0;
 }
 
 .fret-label {
