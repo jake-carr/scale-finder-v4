@@ -13,6 +13,7 @@ import Fretboard from './containers/Fretboard';
 import Footer from './containers/Footer';
 import CircularButton from './interactive/CircularButton';
 import Checkbox from './interactive/Checkbox.jsx';
+import Metronome from './interactive/Metronome.jsx';
 
 export default function App() {
   // App
@@ -177,6 +178,7 @@ export default function App() {
             emoji={true}
           />
         </div>
+        <Metronome />
         <Settings
           note={note}
           scale={scale}
