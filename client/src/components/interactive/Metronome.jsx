@@ -1,44 +1,103 @@
-// toggled by a button on the right
-// metronome modal itself is draggable and resizable, high z-index
-// options: bpm, notes, volume
-// mvp: bpm input/stepper , quarter/eight/sixteenth notes avail
-//  add cleaner controls and more note options in future versions
-// plays a sound
-
 import React, { useState, useContext } from 'react';
 import { ThemeContext } from '../../constants/theme-context';
+import Slider from 'react-input-slider';
+import Modal from 'react-modal-resizable-draggable';
 
 // only prop will be isOpen
-export default function Metronome({}) {
+export default function Metronome({ isOpen, toggleMetronome }) {
   const theme = useContext(ThemeContext);
-
-  // Modal movement
-  const [size, resizeWindow] = useState(100); // % ?
-  const [position, moveWindow] = useState([0, 0]); // x, y % ?
 
   // Metronome settings
   const [BPM, setBPM] = useState(120); // Min 60, Max 240, selected by slider
   const [frequency, setFrequency] = useState('Quarter'); // Quarter, Eigth or Sixteenth, selected by radio btns
   const [volume, setVolume] = useState(50); // Min 0, Max 100, slider
-  const [playing, toggleMetronome] = useState(false); // Start/stop button
+  const [playing, togglePlaying] = useState(false); // Start/stop button
 
   return (
-    <div className="metronome">
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={() => toggleMetronome(false)}
+      onFocus={() => console.log(Modal)}
+      className={'metronome'}
+      initWidth={300}
+      initHeight={200}
+    >
       <div className="settings">
         <div className="metronome-setting">
-          <span>{BPM}</span>
-          <span>Slider goes here</span>
+          <label for="bpm-slider">BPM {BPM} </label>
+          <Slider
+            name="bpm-slider"
+            axis="x"
+            x={BPM}
+            xmin={60}
+            xmax={240}
+            onChange={({ x }) => setBPM(x)}
+            styles={{
+              track: {
+                backgroundColor: theme.tuning,
+              },
+              active: {
+                backgroundColor: theme.secondary,
+              },
+            }}
+          />
         </div>
         <div className="metronome-setting">
-          <span>{frequency}</span>
-          <span>Radio btns go here</span>
+          <input
+            type="radio"
+            value="Quarter"
+            name="frequency"
+            checked={frequency === 'Quarter'}
+            onChange={(e) => setFrequency(e.target.value)}
+          />
+          ♩
+          <input
+            type="radio"
+            value="Eighth"
+            name="frequency"
+            checked={frequency === 'Eighth'}
+            onChange={(e) => setFrequency(e.target.value)}
+          />
+          ♫
+          <input
+            type="radio"
+            value="Sixteenth"
+            name="frequency"
+            checked={frequency === 'Sixteenth'}
+            onChange={(e) => setFrequency(e.target.value)}
+          />
+          ♬
         </div>
         <div className="metronome-setting">
-          <button>PLAY BUTTON</button>
-          <span>{volume}</span>
-          <span>Slider goes here</span>
+          <i className="fas fa-volume-down" />
+          <Slider
+            name="vol-slider"
+            axis="x"
+            x={volume}
+            xmin={0}
+            xmax={100}
+            onChange={({ x }) => setVolume(x)}
+            styles={{
+              track: {
+                backgroundColor: theme.tuning,
+              },
+              active: {
+                backgroundColor: theme.secondary,
+              },
+            }}
+          />
+          <i className="fas fa-volume-up" />
+        </div>
+        <div className="metronome-setting">
+          <button onClick={() => togglePlaying(!playing)}>
+            {playing ? (
+              <i className="fas fa-pause" />
+            ) : (
+              <i className="fas fa-play" />
+            )}
+          </button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }

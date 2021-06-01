@@ -43,6 +43,7 @@ export default function App() {
   const [highlight, toggleHighlight] = useState(false);
   const [allNotes, toggleAllNotes] = useState(false);
   const [degrees, toggleDegrees] = useState(false);
+  const [metronome, toggleMetronome] = useState(true);
 
   // Constants
   const theme = useContext(ThemeContext);
@@ -178,7 +179,13 @@ export default function App() {
             emoji={true}
           />
         </div>
-        <Metronome />
+        <button onClick={() => toggleMetronome(!metronome)}>
+          METRONOME
+        </button>
+        <Metronome
+          isOpen={metronome}
+          toggleMetronome={toggleMetronome}
+        />
         <Settings
           note={note}
           scale={scale}
