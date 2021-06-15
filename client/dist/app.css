@@ -45,8 +45,8 @@ button:focus {
 
 .theme-button {
   position: absolute;
-  top: 1.5%;
-  right: 1%;
+  top: 0.5%;
+  right: 0.5%;
   z-index: 10000;
 }
 
@@ -70,8 +70,10 @@ i {
 
 .checkbox-container {
   position: absolute;
-  top: 1.5%;
-  left: 1%;
+  top: 0.5%;
+  left: 0.5%;
+  display: flex;
+  flex-direction: row;
   z-index: 10000;
 }
 
@@ -120,6 +122,39 @@ i {
 .checkbox-label:hover {
   cursor: pointer;
   color: rgb(36, 169, 231) !important;
+}
+
+.metronome {
+  position: absolute;
+  top: 0.5%;
+  left: 18%;
+  width: 25%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.metronome label {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.metronome-label {
+  margin-bottom: 0.25rem;
+}
+
+.bpm-label {
+  margin-top: 0.25rem;
+}
+
+.play-pause-button {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.5rem;
+  text-align: center;
+  border-radius: 50%;
+  border: none;
+  margin-right: 0.75rem;
+  align-self: center;
 }
 
 .dropdown-container {

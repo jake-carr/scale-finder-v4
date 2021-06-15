@@ -72,7 +72,7 @@ export default function PrimaryDropdown({
     >
       <label
         className="dropdown-label"
-        for={name}
+        htmlFor={name}
         style={{ color: mode.text }}
       >
         {name.toUpperCase()}

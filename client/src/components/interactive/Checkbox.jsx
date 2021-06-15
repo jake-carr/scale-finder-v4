@@ -29,7 +29,7 @@ export default function Checkbox({ on, toggle }) {
       <label
         className="checkbox-label"
         style={{ color: theme.text }}
-        for="saveSettings"
+        htmlFor="saveSettings"
         onClick={() => handleToggle()}
       >
         Remember my settings

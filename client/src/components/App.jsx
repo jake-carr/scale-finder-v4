@@ -12,7 +12,8 @@ import Settings from './containers/Settings';
 import Fretboard from './containers/Fretboard';
 import Footer from './containers/Footer';
 import CircularButton from './interactive/CircularButton';
-import Checkbox from './interactive/Checkbox.jsx';
+import Checkbox from './interactive/Checkbox';
+import Metronome from './interactive/Metronome';
 
 export default function App() {
   // App
@@ -71,7 +72,6 @@ export default function App() {
       saveLocally('degreeNotation', degreeNotation);
       saveLocally('tuning', tuning);
       saveLocally('frets', frets);
-      saveLocally('strings', strings);
       saveLocally('saveSettings', true);
     }
   }, [saveSettings]);
@@ -170,6 +170,13 @@ export default function App() {
         <div className="checkbox-container">
           <Checkbox on={saveSettings} toggle={toggleSaveSettings} />
         </div>
+        <Metronome
+          textColor={themes[selectedTheme].text}
+          trackColor={themes[selectedTheme].tuning}
+          activeColor={themes[selectedTheme].tertiary}
+          buttonColor={themes[selectedTheme].primary}
+          buttonBorder={themes[selectedTheme].primaryAccent}
+        />
         <div className="theme-button">
           <CircularButton
             title="Toggle between light and dark theme."
