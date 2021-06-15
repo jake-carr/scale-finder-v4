@@ -33,10 +33,6 @@ export default function Settings({
   changeTuning,
   note,
   scale,
-  metronome,
-  toggleMetronome,
-  metronomeTempo,
-  changeMetronomeTempo,
 }) {
   const [infoOpen, toggleInfo] = useState(false);
 
