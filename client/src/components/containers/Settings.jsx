@@ -33,6 +33,10 @@ export default function Settings({
   changeTuning,
   note,
   scale,
+  metronome,
+  toggleMetronome,
+  metronomeTempo,
+  changeMetronomeTempo,
 }) {
   const [infoOpen, toggleInfo] = useState(false);
 
@@ -115,6 +119,7 @@ export default function Settings({
           />
           <button
             className="small-circular-button"
+            aria-label="info-button"
             style={
               infoOpen
                 ? {
@@ -130,10 +135,12 @@ export default function Settings({
             }
             onClick={() => toggleInfo(!infoOpen)}
           >
-            i
+            <i
+              className="fas fa-info-circle"
+              style={{ fontSize: '1rem' }}
+            />
           </button>
         </div>
-
         <div className="selectors">
           <RectangularButton
             title={
@@ -157,6 +164,7 @@ export default function Settings({
 
           <button
             className="small-circular-button"
+            aria-label="toggle note alteration (sharps/flats) button"
             style={{
               backgroundColor: theme.gradient2,
               border: `2px solid ${theme.gradient0}`,

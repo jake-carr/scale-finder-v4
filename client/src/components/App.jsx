@@ -12,8 +12,8 @@ import Settings from './containers/Settings';
 import Fretboard from './containers/Fretboard';
 import Footer from './containers/Footer';
 import CircularButton from './interactive/CircularButton';
-import Checkbox from './interactive/Checkbox.jsx';
-import Metronome from './interactive/Metronome.jsx';
+import Checkbox from './interactive/Checkbox';
+import Metronome from './interactive/Metronome';
 
 export default function App() {
   // App
@@ -43,7 +43,6 @@ export default function App() {
   const [highlight, toggleHighlight] = useState(false);
   const [allNotes, toggleAllNotes] = useState(false);
   const [degrees, toggleDegrees] = useState(false);
-  const [metronome, toggleMetronome] = useState(true);
 
   // Constants
   const theme = useContext(ThemeContext);
@@ -73,7 +72,6 @@ export default function App() {
       saveLocally('degreeNotation', degreeNotation);
       saveLocally('tuning', tuning);
       saveLocally('frets', frets);
-      saveLocally('strings', strings);
       saveLocally('saveSettings', true);
     }
   }, [saveSettings]);
@@ -172,6 +170,13 @@ export default function App() {
         <div className="checkbox-container">
           <Checkbox on={saveSettings} toggle={toggleSaveSettings} />
         </div>
+        <Metronome
+          textColor={themes[selectedTheme].text}
+          trackColor={themes[selectedTheme].tuning}
+          activeColor={themes[selectedTheme].tertiary}
+          buttonColor={themes[selectedTheme].primary}
+          buttonBorder={themes[selectedTheme].primaryAccent}
+        />
         <div className="theme-button">
           <CircularButton
             title="Toggle between light and dark theme."
@@ -179,13 +184,6 @@ export default function App() {
             emoji={true}
           />
         </div>
-        <button onClick={() => toggleMetronome(!metronome)}>
-          METRONOME
-        </button>
-        <Metronome
-          isOpen={metronome}
-          toggleMetronome={toggleMetronome}
-        />
         <Settings
           note={note}
           scale={scale}
