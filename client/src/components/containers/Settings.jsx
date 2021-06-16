@@ -124,7 +124,7 @@ export default function Settings({
                     color: theme.gradient3,
                   }
                 : {
-                    backgroundColor: theme.gradient2,
+                    backgroundColor: theme.gradient3,
                     border: `2px solid ${theme.gradient0}`,
                     color: theme.text,
                   }
@@ -162,7 +162,7 @@ export default function Settings({
             className="small-circular-button"
             aria-label="toggle note alteration (sharps/flats) button"
             style={{
-              backgroundColor: theme.gradient2,
+              backgroundColor: theme.gradient3,
               border: `2px solid ${theme.gradient0}`,
               color: theme.text,
             }}
@@ -174,7 +174,12 @@ export default function Settings({
         </div>
       </div>
       <div className="settings-container-outer">
-        <InfoModal open={infoOpen} scale={scale} />
+        <InfoModal
+          open={infoOpen}
+          scale={scale}
+          note={note}
+          sharps={sharps}
+        />
       </div>
     </main>
   );

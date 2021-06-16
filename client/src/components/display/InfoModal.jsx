@@ -1,11 +1,8 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../constants/theme-context';
-import {
-  scales,
-  mapQualitiesToStrings,
-} from '../../constants/scales';
+import { scales, getChords } from '../../constants/scales';
 
-export default function InfoModal({ open, scale }) {
+export default function InfoModal({ open, scale, note, sharps }) {
   const theme = useContext(ThemeContext);
   return (
     <div
@@ -23,7 +20,7 @@ export default function InfoModal({ open, scale }) {
       </div>
       {scales[scale].qualities ? (
         <div className="qualities">
-          Chord qualities: {mapQualitiesToStrings(scale)}
+          Chords in key: {getChords(scale, note, sharps)}
         </div>
       ) : null}
     </div>
