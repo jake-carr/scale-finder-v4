@@ -9,7 +9,6 @@ export default class Metronome extends Component {
     this.state = {
       tempo: 120, // 30-300
       audioContext: null,
-      queue: [], // Notes that have been put into the web audio and may or may not have been played yet {note, time}
       currentQuarterNote: 0,
       lookahead: 25, // How frequently to call scheduling function (in milliseconds)
       scheduleAheadTime: 0.1, // How far ahead to schedule audio (sec)
@@ -21,7 +20,9 @@ export default class Metronome extends Component {
 
   nextNote() {
     // Advance current note and time by a quarter note
-    var secondsPerBeat = 60.0 / this.state.tempo; // Notice this picks up the CURRENT tempo value to calculate beat length.
+
+    // Calculate beat length using selected tempo
+    const secondsPerBeat = 60.0 / this.state.tempo;
 
     // Add beat length to last beat time & advance the beat number, wrapping to zero
     this.setState(
@@ -38,14 +39,13 @@ export default class Metronome extends Component {
   }
 
   scheduleNote(beatNumber, time) {
-    // push the note on the queue, even if we're not isPlaying.
-    this.state.queue.push({ note: beatNumber, time: time });
-
-    // create an oscillator
+    // Create an oscillator
     const osc = this.state.audioContext.createOscillator();
     const envelope = this.state.audioContext.createGain();
 
-    osc.frequency.value = beatNumber % 4 == 0 ? 1000 : 800;
+    // Give first beat a slightly higher tone
+    osc.frequency.value = beatNumber == 0 ? 660 : 440;
+
     envelope.gain.value = 1;
     envelope.gain.exponentialRampToValueAtTime(1, time + 0.001);
     envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
@@ -58,14 +58,14 @@ export default class Metronome extends Component {
   }
 
   scheduler() {
-    // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
+    // While there are notes that will need to play before the next interval, schedule them and advance the pointer.
     while (
       this.state.nextNoteTime <
       this.state.audioContext.currentTime +
         this.state.scheduleAheadTime
     ) {
       this.scheduleNote(
-        this.currentQuarterNote,
+        this.state.currentQuarterNote,
         this.state.nextNoteTime,
       );
       this.nextNote();
@@ -115,10 +115,6 @@ export default class Metronome extends Component {
     clearInterval(this.state.intervalID);
   }
 
-  handlePlayPause() {
-    this.startStop();
-  }
-
   handleTempoChange(tempo, wasJustPlaying) {
     this.stop();
     this.setState({ tempo }, () => {
@@ -137,7 +133,7 @@ export default class Metronome extends Component {
             background: this.props.buttonColor,
             color: this.props.textColor,
           }}
-          onClick={() => this.handlePlayPause()}
+          onClick={() => this.startStop()}
         >
           <i
             id="play-pause-icon"
